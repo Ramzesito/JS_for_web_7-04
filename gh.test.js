@@ -1,16 +1,18 @@
 let page;
 
+beforeEach(async () => {
+  page = await browser.newPage();
+});
+afterEach(() => {
+  page.close();
+});
+
 describe("Github page tests", () => {
 
   jest.setTimeout(60000);
 
   beforeEach(async () => {
-    page = await browser.newPage();
     await page.goto("https://github.com/team", {timeout: 10000});
-  });
-  
-  afterEach(() => {
-    page.close();
   });
 
   test("The h1 header content", async () => {
@@ -43,12 +45,7 @@ describe("Github page additional test (about page)", () => {
   jest.setTimeout(60000);
 
   beforeEach(async () => {
-    page = await browser.newPage();
     await page.goto("https://github.com/about", {timeout: 10000});
-  });
-  
-  afterEach(() => {
-    page.close();
   });
 
   test("H1 content", async () => {
@@ -66,12 +63,7 @@ describe("Github page additional test (shop page)", () => {
   jest.setTimeout(60000);
 
   beforeEach(async () => {
-    page = await browser.newPage();
     await page.goto("https://www.thegithubshop.com");
-  });
-  
-  afterEach(() => {
-    page.close();
   });
 
   test("1 block content", async () => {
@@ -88,12 +80,7 @@ describe("Github page additional test (pricing page)", () => {
   jest.setTimeout(60000);
 
   beforeEach(async () => {
-    page = await browser.newPage();
     await page.goto("https://github.com/pricing");
-  });
-  
-  afterEach(() => {
-    page.close();
   });
 
   test("H2 content", async () => {
